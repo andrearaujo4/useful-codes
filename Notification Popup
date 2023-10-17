@@ -1,0 +1,219 @@
+<style>
+
+.overflow-auto {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+ }
+
+.toast {
+  display: none; 
+  width: 450px;
+  max-width: 552px;
+  position: fixed;
+  top: 200px;
+  right: 0px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px 35px 15px 10px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  opacity: 1;
+}
+
+.toast.active {
+  transform: translateX(0%);
+  width: 1500px;
+}
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast .toast-link {
+ text-decoration: none;
+}
+
+.imagepop {
+  border-radius: 50%;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 13px;
+}
+
+.message .text {
+  font-weight: 400;
+  color: #666666;
+}
+
+.message .text.text-1 {
+   font-size: 17px;
+  font-weight: 600;
+  color: #333;
+}
+  
+  .message .text.text-2 {
+   font-size: 11px;
+  }
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast .close:hover {
+  opacity: 1;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #506055;
+}
+  
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+.progress.active:before {
+  animation: progress 15s linear forwards;
+}
+
+.buttonpop {
+	background: #75AA90;
+    color: white;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin: 50px 0px 0px 0px;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+}
+
+.buttonpop:hover {
+	background: #5F9A7D;
+}
+
+ @media only screen and (max-width: 768px) {
+  .toast {
+    width: 200px;
+    max-width: 250px;
+    background: #F17247;
+    padding: 5px 15px 15px 5px;
+ }
+  
+   .message .text.text-1 {
+     font-size: 13px;
+     color: white;
+   }
+   
+   .message .text.text-2 {
+     color: white;
+     font-size: 8px;
+   }
+   
+  .imagepop {
+    display: none;
+ }
+   
+   .buttonpop {
+   margin-top: 5px;
+   border-radius: 15px;
+   font-size: 13px;
+   }
+ 
+</style>
+
+<div class="toast" id="toast">
+ <a class="toast-link">
+  
+  <div class="toast-content">
+    <img src="https://i.imgur.com/84vSGE3.png" class="imagepop" Alt="Svr solares" style="width: 90px">
+
+    <div class="message">
+      <span class="text text-1">SOLARES SVR 40% DESCONTO</span>
+      <span class="text text-2">SÓ ATÉ 31 DE JULHO</span>
+    </div>
+    
+    <button class="buttonpop" type="button" id="buttonpop" onclick="window.location.href='https://bemecare.com/pt/categoria/solares?sort=id,desc&root=categories,43&take=12&skip=0&brand=401&campaigns=true'">Ver Produtos</button>
+  </div>
+  <span class="fa-solid fa-xmark close"></span>
+
+  <div class="progress"></div>
+  </a>
+</div>
+
+<script>
+  
+  toast = document.querySelector(".toast");
+(closeIcon = document.querySelector(".close")),
+  (progress = document.querySelector(".progress"));
+
+var timer1, timer2;
+
+  setTimeout( function() { 
+   toast.classList.add("active");
+  progress.classList.add("active")
+  }, 5000);
+
+  timer1 = setTimeout(function() {
+    toast.classList.remove("active");
+  }, 20000); //1s = 1000 milliseconds
+
+  timer2 = setTimeout(function() {
+    progress.classList.remove("active");
+  }, 20000);
+
+closeIcon.addEventListener("click", function() {
+  toast.classList.remove("active");
+
+  setTimeout( function() {
+    progress.classList.remove("active");
+  }, 300);
+
+  clearTimeout(timer1);
+  clearTimeout(timer2);
+});
+  
+  // Definir Cookie //
+  
+  var notipopup = document.getElementById("toast");
+
+setTimeout(function(){
+  
+if (getCookie('viu_notificacao') == null || getCookie('viu_notificacao') == "" ) {
+  
+  notipopup.style.display = "block";
+  
+  setCookie('viu_notificacao',1,7300)
+}
+  
+}, 3000);
+  
+  
+</script>
