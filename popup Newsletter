@@ -1,0 +1,153 @@
+<style>
+
+.sib-form {
+  padding: 0 !important;
+}
+
+.modal-newsletter {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content-newsletter {
+  background-color: transparent;
+  margin: auto;
+  padding: 0px;
+  border: 0px solid transparent;
+  width: 580px;
+  position: relative;
+}
+  
+@media only screen and (max-width: 800px) {
+  .modal-newsletter {
+    padding-top: 135px;
+  }
+ }
+  
+ @media only screen and (max-width: 600px) {
+.modal-content-newsletter {
+width: 100% !important;
+padding: 10px !important;
+}
+.modal-newsletter {
+padding-top: 65px !important;
+position: absolute !important;
+z-index: 100 !important;
+}  
+
+
+}
+  
+
+.close-newsletter {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+}
+
+.close-newsletter:hover,
+.close-newsletter:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+
+<div id="modal-newsletter-subscription" class="modal-newsletter">
+  <div class="modal-content-newsletter">
+    <span class="close-newsletter">&times;</span>
+  </div>
+</div>
+
+
+<script>
+  
+  var iframe = document.createElement('iframe');
+iframe.style.display = "none";
+iframe.src = "https://bfe6a6f0.sibforms.com/serve/MUIEAB5wAyFxY1MOAaYRzJL_aM9PptkYhvxDLQYJKh9WDuEJVjhiUZp0ZFm8wFRp-59TXXnYbphqMAD1bUYOKa63FLxTmgXm7R5UtzqmRGOs3-bYEXJYr5f3xqzOhQIzlbc5xS0xrLalsUz90Xyy_AMCSkmDZAEMpt9nIZwvQNMiZRLZZJF-ATS_MYWKV--M5EtcmG_qT834rY8t";
+iframe.setAttribute("width", "100%");
+  
+  if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  iframe.setAttribute("height", "625px"); 
+} else {
+  iframe.setAttribute("height", "700px"); 
+}
+  
+iframe.setAttribute("frameborder", "0")
+iframe.setAttribute("scrolling", "no")
+iframe.setAttribute("allowfullscreen","")
+iframe.setAttribute("style", "display: block;margin-left: auto;margin-right: auto;max-width: 100%;")
+  
+  var modal_sel = document.querySelector('.modal-content-newsletter');
+
+setTimeout(function(){
+if (getCookie('viu_popup_NL') == null || getCookie('viu_popup_NL') == "") {
+modal_sel.appendChild(iframe);
+};
+}, 3000);
+  </script>
+
+<script>
+var modal = document.getElementById("modal-newsletter-subscription");
+
+var span = document.getElementsByClassName("close-newsletter")[0];
+
+setTimeout(function(){
+  
+if(getCookie('viu_popup_NL') == null || getCookie('viu_popup_NL') == "" ) {
+  modal.style.display = "block";
+  
+  setCookie('viu_popup_NL',1,7300)
+}
+}, 3000);
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+</script>
+
+
+<script>
+  
+  function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+  
+</script>
